@@ -16,12 +16,12 @@ class CreateChallengeSubmissionTest < Minitest::Test
 
   def test_create_new_challenge_submission
     student = Domain::Entities::Student.create(
-      name: 'Diego',
-      email: 'doe@example.com'
+      name: 'John Doe',
+      email: 'johndoe@example.com'
     )
 
     challenge = Domain::Entities::Challenge.create(
-      title: 'Challenge 01',
+      title: 'ChallenJohnge 01',
       instruction_url: 'http://example.com'
     )
 
@@ -32,5 +32,10 @@ class CreateChallengeSubmissionTest < Minitest::Test
       student_id: student.id,
       challenge_id: challenge.id
     )
+
+    assert_instance_of Domain::Entities::Submission, response
+    assert_equal student.id, response.props[:student_id]
+    assert_equal challenge.id, response.props[:challenge_id]
+    refute_nil response.id
   end
 end
