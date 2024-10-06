@@ -12,12 +12,12 @@ module Domain
 
       Props = T.type_alias { { title: String, instruction_url: String } }
 
-      sig { params(props: Props, id: T.nilable(Integer)).void }
+      sig { params(props: Props, id: T.nilable(String)).void }
       def initialize(props, id = nil)
         super(props, id)
       end
 
-      sig { params(props: Props, id: T.nilable(Integer)).returns(Challenge) }
+      sig { params(props: Props, id: T.nilable(String)).returns(Challenge) }
       def self.create(props, id = nil)
         new(props, id)
       end

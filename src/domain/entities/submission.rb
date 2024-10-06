@@ -12,12 +12,12 @@ module Domain
 
       Props = T.type_alias { { student_id: String, challenge_id: String } }
 
-      sig { params(props: Props, id: T.nilable(Integer)).void }
+      sig { params(props: Props, id: T.nilable(String)).void }
       def initialize(props, id = nil)
         super(props, id)
       end
 
-      sig { params(props: Props, id: T.nilable(Integer)).returns(Submission) }
+      sig { params(props: Props, id: T.nilable(String)).returns(Submission) }
       def self.create(props, id = nil)
         new(props, id)
       end

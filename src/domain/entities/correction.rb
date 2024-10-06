@@ -12,12 +12,12 @@ module Domain
 
       Props = T.type_alias { { grade: Integer } }
 
-      sig { params(props: Props, id: T.nilable(Integer)).void }
+      sig { params(props: Props, id: T.nilable(String)).void }
       def initialize(props, id = nil)
         super(props, id)
       end
 
-      sig { params(props: Props, id: T.nilable(Integer)).returns(Correction) }
+      sig { params(props: Props, id: T.nilable(String)).returns(Correction) }
       def self.create(props, id = nil)
         raise 'Grade must be between 0 and 10' if (props[:grade]).negative? || props[:grade] > 10
 
