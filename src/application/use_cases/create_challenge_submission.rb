@@ -1,3 +1,4 @@
+# typed: true
 # frozen_string_literal: true
 
 require_relative '../../domain/entities/submission'
@@ -17,7 +18,7 @@ module Application
         challenge = @challenges_repository.find_by_id(challenge_id)
         raise 'Challenge does not exist' unless challenge
 
-        Domain::Entities::Submission.create(student_id: student_id, challenge_id: challenge_id)
+        Domain::Entities::Submission.create(student_id:, challenge_id:)
       end
     end
   end
