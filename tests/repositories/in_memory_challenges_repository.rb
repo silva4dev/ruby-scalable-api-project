@@ -1,9 +1,11 @@
+# typed: true
 # frozen_string_literal: true
 
 require_relative '../../src/application/repositories/challenges_repository'
 
 class InMemoryChallengesRepository < Application::Repositories::ChallengesRepository
   def initialize
+    super()
     @items = []
   end
 
@@ -12,7 +14,5 @@ class InMemoryChallengesRepository < Application::Repositories::ChallengesReposi
     challenge.nil? ? nil : challenge
   end
 
-  def items
-    @items
-  end
+  attr_reader :items
 end

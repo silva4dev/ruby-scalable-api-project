@@ -1,9 +1,11 @@
+# typed: true
 # frozen_string_literal: true
 
 require_relative '../../src/application/repositories/students_repository'
 
 class InMemoryStudentsRepository < Application::Repositories::StudentsRepository
   def initialize
+    super()
     @items = []
   end
 
@@ -12,7 +14,5 @@ class InMemoryStudentsRepository < Application::Repositories::StudentsRepository
     student.nil? ? nil : student
   end
 
-  def items
-    @items
-  end
+  attr_reader :items
 end
