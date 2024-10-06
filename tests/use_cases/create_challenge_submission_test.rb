@@ -12,7 +12,10 @@ class CreateChallengeSubmissionTest < Minitest::Test
   def setup
     @students_repository = InMemoryStudentsRepository.new
     @challenge_repository = InMemoryChallengesRepository.new
-    @sut = Application::UseCases::CreateChallengeSubmission.new(@students_repository, @challenge_repository)
+    @create_challenge_submission_use_case = Application::UseCases::CreateChallengeSubmission.new(
+      @students_repository,
+      @challenge_repository
+    )
   end
 
   def test_create_new_challenge_submission
@@ -29,14 +32,14 @@ class CreateChallengeSubmissionTest < Minitest::Test
     @students_repository.items.push(student)
     @challenge_repository.items.push(challenge)
 
-    response = @sut.execute(
+    sut = @create_challenge_submission_use_case.execute(
       student_id: student.id,
       challenge_id: challenge.id
     )
 
-    assert_instance_of Domain::Entities::Submission, response
-    assert_equal student.id, response.props[:student_id]
-    assert_equal challenge.id, response.props[:challenge_id]
-    refute_nil response.id
+    assert_instance_of Domain::Entities::Submission, sut
+    assert_equal student.id, sut.props[:student_id]
+    assert_equal challenge.id, sut.props[:challenge_id]
+    refute_nil sut.id
   end
 end
