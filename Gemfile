@@ -6,6 +6,8 @@ git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 ruby '3.3.0'
 
+gem 'sorbet'
+gem 'sorbet-runtime'
 gem 'uuid'
 
 group :development, :test do
