@@ -1,6 +1,6 @@
 require:
   - rubocop-performance
-  - rubocop-rspec
+  - rubocop-minitest
 
 AllCops:
   TargetRubyVersion: 3.3.0
@@ -52,4 +52,8 @@ Layout/LineLength:
 Style/SuperArguments:
   Enabled: false
 Naming/BlockForwarding:
+  Enabled: false
+Naming/AccessorMethodName:
+  Enabled: false
+Minitest/MultipleAssertions:
   Enabled: false
