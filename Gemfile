@@ -15,7 +15,8 @@ group :development, :test do
   gem 'minitest'
   gem 'pry'
   gem 'rubocop'
+  gem 'rubocop-minitest'
   gem 'rubocop-performance'
-  gem 'rubocop-rspec'
   gem 'simplecov'
+  gem 'tapioca', require: false
 end
